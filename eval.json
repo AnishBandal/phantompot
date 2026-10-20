@@ -1,0 +1,95 @@
+{
+  "evaluation_metadata": {
+    "execution_start": "2026-04-13T22:19:58.512643",
+    "execution_end": "2026-04-13T22:20:47.808985",
+    "total_duration_seconds": 49.296342,
+    "scenarios_run": 10,
+    "scenarios_passed": 8,
+    "scenarios_failed": 2,
+    "scenario_success_rate": 80.0
+  },
+  "kpi_1_attack_detection_rate": {
+    "description": "ML model's ability to detect attacks (TP/FP classification rates)",
+    "metrics": {
+      "total_sessions": 0,
+      "true_positives": 0,
+      "true_negatives": 0,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "attack_detection_rate": 0.0,
+      "true_positive_rate": 0.0,
+      "false_positive_rate": 0.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "accuracy": 0.0
+    },
+    "by_protocol": {},
+    "interpretation": {
+      "attack_detection_rate": "NEEDS IMPROVEMENT: <70% attack detection rate",
+      "false_positive_rate": "EXCELLENT: \u22645% false positive rate",
+      "precision": "MODERATE PRECISION: Review false alarm patterns",
+      "overall": "DETECTION PERFORMANCE NEEDS IMPROVEMENT"
+    }
+  },
+  "kpi_2_protocol_coverage": {
+    "description": "Number of active honeypot protocols capturing sessions",
+    "metrics": {
+      "active_protocol_count": 4,
+      "active_protocols": [
+        "ftp",
+        "http",
+        "ssh",
+        "telnet"
+      ],
+      "total_sessions": 8,
+      "sessions_per_protocol": {
+        "ssh": 1,
+        "http": 3,
+        "ftp": 3,
+        "telnet": 1
+      }
+    },
+    "interpretation": {
+      "coverage": "FULL: 4/4 protocols active",
+      "active_protocols": "Active: ftp, http, ssh, telnet",
+      "session_distribution": "8 total sessions captured"
+    }
+  },
+  "kpi_3_logging_accuracy": {
+    "description": "Percentage of sessions fully logged without data loss under concurrent load",
+    "metrics": {
+      "total_sessions": 0,
+      "fully_logged_sessions": 0,
+      "data_loss_detected_sessions": 0,
+      "average_command_coverage_percent": 0.0,
+      "average_login_coverage_percent": 0.0,
+      "overall_logging_accuracy_percent": 0.0,
+      "sessions_with_full_integrity": 0,
+      "integrity_rate_percent": 0.0
+    },
+    "by_protocol": {},
+    "interpretation": {
+      "overall_status": "NEEDS IMPROVEMENT: <90% logging accuracy",
+      "data_loss_incidents": "0 sessions with data loss",
+      "fully_logged": "0/0 sessions fully logged",
+      "integrity_rate": "0.0% sessions with perfect integrity"
+    }
+  },
+  "kpi_4_system_response_time": {
+    "description": "Average latency from connection arrival to session log write",
+    "metrics": {
+      "average_ms": 0.0,
+      "p95_ms": 0.0,
+      "p99_ms": 0.0,
+      "max_ms": 0.0,
+      "total_samples": 0
+    },
+    "interpretation": {
+      "average_response_time": "EXCELLENT: \u226410ms average latency (0.0ms)",
+      "p95_response_time": "P95: 0.0ms",
+      "p99_response_time": "P99: 0.0ms",
+      "max_response_time": "Max: 0.0ms"
+    }
+  }
+}

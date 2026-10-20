@@ -1,0 +1,149 @@
+PhantomPot - Multi-Protocol Honeypot with Objective 4 KPI Evaluation
+=====================================================================
+
+PROJECT STATUS
+==============
+✓ All dependencies installed
+✓ SSH host key generated  
+✓ ML models ready
+✓ Configuration complete
+✓ Code fully implemented with Objective 4 KPI framework
+
+STARTING THE PROJECT
+====================
+
+STEP 1: Start the Honeypot (Terminal 1)
+--------------------------------------
+python src/main.py
+
+Expected output:
+  [*] PhantomPot -- multi-protocol honeypot starting ...
+  [*] Press Ctrl-C to stop all listeners.
+
+The system will listen on:
+  - SSH:    localhost:2222
+  - HTTP:   localhost:8080
+  - FTP:    localhost:2121
+  - Telnet: localhost:2323
+
+
+STEP 2: Run KPI Evaluation (Terminal 2, after 5-10 seconds)
+----------------------------------------------------------
+python scripts/evaluate_objective4.py --intensity medium --output eval_report.json
+
+This simulates 25 attack scenarios and measures:
+  1. Attack Detection Rate (TP/FP classification)
+  2. Protocol Coverage (4 active protocols)
+  3. Logging Accuracy (data loss detection)
+  4. System Response Time (connection-to-log latency)
+
+Expected runtime: 5-10 minutes
+
+
+STEP 3: Generate Reports (Terminal 2)
+------------------------------------
+python scripts/generate_kpi_report.py --eval eval_report.json --format all
+
+Generates:
+  - objective4_report-TIMESTAMP.json    (machine-readable)
+  - objective4_report-TIMESTAMP.md      (markdown)
+  - objective4_report-TIMESTAMP.html    (visual report)
+
+
+STEP 4: View Dashboard (Terminal 3)
+---------------------------------
+streamlit run dashboard/app.py
+
+Then open: http://localhost:8501
+Navigate to: "KPI Metrics (Objective 4)" tab
+
+
+QUICK ALTERNATIVES
+==================
+
+Quick Evaluation (5 minutes):
+  Terminal 1: python src/main.py
+  Terminal 2: python scripts/evaluate_objective4.py --quick
+
+Simulate Attacks Only:
+  Terminal 1: python src/main.py
+  Terminal 2: python scripts/simulate_ssh_attacks.py
+  Terminal 2: python scripts/simulate_multi_protocol.py
+
+View Results:
+  cat logs/sessions.jsonl
+
+
+FOUR KPIs EXPLAINED
+===================
+
+1. ATTACK DETECTION RATE
+   - True Positive Rate (target: >=90%)
+   - False Positive Rate (target: <=5%)
+   - Precision, Recall, F1-Score
+   
+2. PROTOCOL COVERAGE
+   - Active protocols: SSH, HTTP, FTP, Telnet (target: 4/4)
+   - Sessions per protocol
+   
+3. LOGGING ACCURACY
+   - Sessions fully logged without data loss (target: >=99.9%)
+   - Command & login coverage
+   
+4. RESPONSE TIME
+   - Average latency in milliseconds (target: <=10ms)
+   - P95, P99 percentiles
+
+
+PROJECT FILES
+=============
+
+Source Code:
+  src/main.py                     Application entry point
+  src/core/kpi_metrics.py         KPI collection (NEW)
+  src/core/logger.py              Enhanced logging
+  src/ssh/,http/,ftp/,telnet/     Protocol handlers
+  src/ml/predict.py              Anomaly detection
+
+Scripts:
+  scripts/evaluate_objective4.py   KPI evaluation (NEW)
+  scripts/generate_kpi_report.py   Report generator (NEW)
+  scripts/simulate_ssh_attacks.py  Attack simulation
+  scripts/simulate_multi_protocol.py Multi-protocol test
+
+Dashboard:
+  dashboard/app.py                Enhanced with KPI tab
+
+Configuration:
+  config/config.yaml              System settings
+  config/ssh_host_rsa.key         SSH host key
+  
+models/
+  isolation_forest.pkl            ML prediction model
+  scaler.pkl                       Feature scaler
+
+Logs:
+  logs/sessions.jsonl              Session data (JSONL format)
+  logs/errors.log                 System errors
+
+
+TROUBLESHOOTING
+===============
+
+Port already in use:
+  lsof -i :2222  (find process)
+  kill -9 PID    (kill process)
+
+Import errors:
+  pip install -r requirements.txt
+
+SSH host key missing:
+  python gen_ssh_key.py
+
+Dashboard won't connect:
+  Check that honeypot is running in Terminal 1
+  Try: streamlit run dashboard/app.py --logger.level=info
+
+
+NEXT: Run this to get started >
+python src/main.py

@@ -1,0 +1,40 @@
+{
+  "model_version": "2026-04-19T13:31:00.545322+00:00",
+  "training_dataset": "D:\\Projects\\VIT\\PhantomPot-v2\\data\\processed\\sessions.csv",
+  "training_rows": 1001,
+  "feature_columns": [
+    "total_login_attempts",
+    "duration",
+    "commands_count",
+    "suspicious_commands_count",
+    "attack_ratio",
+    "activity_intensity",
+    "login_intensity",
+    "protocol_risk",
+    "hour_of_day",
+    "is_weekend"
+  ],
+  "protocol_risk_mapping": {
+    "ssh": 0.9,
+    "telnet": 1.0,
+    "http": 0.7,
+    "ftp": 0.6
+  },
+  "thresholds": {
+    "attack": -0.5002433300875744,
+    "severity_high": -0.5641735681670408,
+    "severity_medium": -0.5331695626197941
+  },
+  "validation": {
+    "rows": 201,
+    "weak_label_attack_ratio": 0.25870646766169153,
+    "calibration_metrics": {
+      "threshold": -0.5002433300875744,
+      "f1": 0.9714285714285714,
+      "precision": 0.9622641509433962,
+      "recall": 0.9807692307692307,
+      "accuracy": 0.9850746268656716
+    }
+  },
+  "notes": "Validation metrics are computed against weak synthetic labels, not real-world labels."
+}

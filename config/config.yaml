@@ -1,0 +1,41 @@
+ssh:
+  host: "0.0.0.0"
+  port: 2222
+  host_key_path: "config/ssh_host_rsa.key"
+
+http:
+  host: "0.0.0.0"
+  port: 8888
+
+ftp:
+  host: "0.0.0.0"
+  port: 2121
+
+telnet:
+  host: "0.0.0.0"
+  port: 2323
+
+logging:
+  sessions_log: "logs/sessions.jsonl"
+  events_log: "logs/events.jsonl"
+  errors_log: "logs/errors.log"
+
+# These are decoy-only credentials and never authenticate host accounts.
+# SSH/FTP/Telnet preserve accept-any behavior by default. Set accept_any false
+# and configure fake accounts to exercise both success and failure paths.
+deception:
+  authentication:
+    ssh:
+      accept_any: true
+      accounts: {}
+    ftp:
+      accept_any: true
+      accounts: {}
+    telnet:
+      accept_any: true
+      accounts: {}
+    http:
+      accept_any: false
+      accounts:
+        demo: decoy-demo
+  correlation_window_seconds: 900
